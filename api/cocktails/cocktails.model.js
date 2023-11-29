@@ -52,7 +52,7 @@ const CocktailsSchema = new mongoose.Schema(
       trim: true,
     },
     preparation: {
-      type: String,
+      type: Array,
       required: true,
       trim: true,
     },
