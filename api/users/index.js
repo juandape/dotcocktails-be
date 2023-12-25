@@ -6,7 +6,7 @@ const {
   createHandler,
   updateHandler,
   deleteHandler,
-} = require('./user.controller');
+} = require('./users.controller');
 
 const router = Router();
 

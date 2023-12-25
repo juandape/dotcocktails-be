@@ -10,12 +10,29 @@ const UsersSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
       trim: true,
     },
     password: {
       type: String,
       required: true,
       trim: true,
+    },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
+    avatar: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    role: {
+      type: String,
+      required: false,
+      trim: true,
+      enum: ['admin', 'user'],
+      default: 'user',
     },
     passwordResetToken: {
       type: String,
@@ -32,5 +49,5 @@ const UsersSchema = new mongoose.Schema(
   }
 );
 
-const Users = mongoose.model('Users', UsersSchema);
+const Users = mongoose.model('User', UsersSchema);
 module.exports = Users;

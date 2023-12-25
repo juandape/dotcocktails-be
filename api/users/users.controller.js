@@ -4,7 +4,7 @@ const {
   createUser,
   updateUser,
   deleteUser,
-} = require('./user.service');
+} = require('./users.service');
 
 async function getAllHandler(req, res, next) {
   try {
