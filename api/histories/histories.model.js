@@ -7,23 +7,8 @@ const HistoriesSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    image1: {
-      type: String,
-      required: false,
-      trim: true,
-    },
-    image2: {
-      type: String,
-      required: false,
-      trim: true,
-    },
-    image3: {
-      type: String,
-      required: false,
-      trim: true,
-    },
-    image4: {
-      type: String,
+    images: {
+      type: Array,
       required: false,
       trim: true,
     },
