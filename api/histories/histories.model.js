@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const HistoriesSchema = new mongoose.Schema(
   {
+    nameId: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     title: {
       type: String,
       required: true,

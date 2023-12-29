@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const CocktailsSchema = new mongoose.Schema(
   {
+    nameId: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,
