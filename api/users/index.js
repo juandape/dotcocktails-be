@@ -3,6 +3,7 @@ const { Router } = require('express');
 const {
   getAllHandler,
   getByIdHandler,
+  getByEmailHandler,
   createHandler,
   updateHandler,
   deleteHandler,
@@ -12,6 +13,7 @@ const router = Router();
 
 router.get('/', getAllHandler);
 router.get('/:id', getByIdHandler);
+router.post('/login', getByEmailHandler);
 router.post('/', createHandler);
 router.patch('/:id', updateHandler);
 router.delete('/:id', deleteHandler);

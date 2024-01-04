@@ -1,4 +1,7 @@
 const User = require('./users.model');
+const {
+  hashPassword
+} = require('../../auth/utils/bcrypt');
 
 function getAllUsers() {
   return User.find();
@@ -13,8 +16,28 @@ async function getUserById(id) {
   return user;
 }
 
-function createUser(data) {
-  return User.create(data);
+async function getUserByEmail(email) {
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return user;
+}
+
+async function createUser(data) {
+  if (!data.password) {
+    throw new Error('Password is required');
+  }
+
+  const hashedPassword = await hashPassword(data.password);
+
+  const newUser = new User({
+    ...data,
+    password: hashedPassword,
+  });
+
+  return newUser.save();
 }
 
 async function updateUser(id, data) {
@@ -40,6 +63,7 @@ async function deleteUser(id) {
 module.exports = {
   getAllUsers,
   getUserById,
+  getUserByEmail,
   createUser,
   updateUser,
   deleteUser,
