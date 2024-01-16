@@ -26,7 +26,7 @@ async function loginHandler(req, res, next) {
 
     return res
       .status(200)
-      .json({ token, user: user.name, user: user.role, message: 'Login success' });
+      .json({ token, user: user.name, role: user.role, message: 'Login success' });
   } catch (error) {
     next(error);
   }
