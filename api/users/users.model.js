@@ -31,8 +31,8 @@ const UsersSchema = new mongoose.Schema(
       type: String,
       required: false,
       trim: true,
-      enum: ['admin', 'user'],
-      default: 'user',
+      enum: ['ADMIN', 'USER'],
+      default: 'USER',
     },
     passwordResetToken: {
       type: String,
