@@ -1,7 +1,5 @@
 const User = require('./users.model');
-const {
-  hashPassword
-} = require('../../auth/utils/bcrypt');
+const { hashPassword } = require('../../auth/utils/bcrypt');
 
 function getAllUsers() {
   return User.find();

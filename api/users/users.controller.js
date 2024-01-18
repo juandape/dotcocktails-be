@@ -6,8 +6,6 @@ const {
   deleteUser,
 } = require('./users.service');
 
-const { comparePassword } = require('../../auth/utils/bcrypt');
-
 async function getAllHandler(req, res, next) {
   try {
     const users = await getAllUsers();
@@ -74,7 +72,6 @@ async function deleteHandler(req, res, next) {
 module.exports = {
   getAllHandler,
   getByIdHandler,
-  // loginHandler,
   createHandler,
   updateHandler,
   deleteHandler,

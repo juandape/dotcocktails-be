@@ -1,6 +1,6 @@
 const { getUserByEmail } = require('../../api/users/users.service');
 const { comparePassword } = require('../../auth/utils/bcrypt');
-const jwt = require('jsonwebtoken');
+const { signToken } = require('../../auth/auth.service');
 
 async function loginHandler(req, res, next) {
   try {
@@ -20,13 +20,16 @@ async function loginHandler(req, res, next) {
 
     //jwt
     const payload = { id: user._id, email: user.email };
-    const SECRET_KEY = process.env.SECRET_KEY;
+    const token = signToken(payload);
 
-    const token = jwt.sign(payload, SECRET_KEY);
+    const profile = {
+      name: user.name,
+      avatar: user.avatar,
+      email: user.email,
+      role: user.role,
+    };
 
-    return res
-      .status(200)
-      .json({ token, user: user.name, role: user.role, message: 'Login success' });
+    return res.status(200).json({ token, profile, message: 'Login success' });
   } catch (error) {
     next(error);
   }
