@@ -8,14 +8,14 @@ const {
   deleteHandler,
 } = require('./histories.controller');
 
-const { isAuthenticated } = require('../../auth/auth.service');
+const { isAuthenticated, hasRole } = require('../../auth/auth.controller');
 
 const router = Router();
 
 router.get('/', getAllHandler);
 router.get('/:id', getByIdHandler);
-router.post('/', isAuthenticated, createHandler);
-router.patch('/:id', isAuthenticated, updateHandler);
-router.delete('/:id', isAuthenticated, deleteHandler);
+router.post('/', isAuthenticated, hasRole(['ADMIN']), createHandler);
+router.patch('/:id', isAuthenticated, hasRole(['ADMIN']), updateHandler);
+router.delete('/:id', isAuthenticated, hasRole(['ADMIN']), deleteHandler);
 
 module.exports = router;

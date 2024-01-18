@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { getUserByEmail } = require('../api/users/users.service');
+
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -19,33 +19,7 @@ function signToken(payload) {
   return token;
 }
 
-async function isAuthenticated(req, res, next) {
-  try {
-    const token = req.headers?.authorization?.split(' ')[1];
-    console.log(token);
-
-    if (!token) {
-      return res.status(401).json({ message: 'Not authorized' });
-    }
-
-    const decoded = verifyToken(token);
-
-    if (!decoded) {
-      return res.status(401).json({ message: 'Not authorized' });
-    }
-
-    const user = getUserByEmail(decoded.email);
-
-    req.user = user;
-
-    next();
-  } catch (error) {
-    next(error);
-  }
-}
-
 module.exports = {
-  isAuthenticated,
   verifyToken,
   signToken,
 };
