@@ -6,6 +6,8 @@ const {
   deleteUser,
 } = require('./users.service');
 
+const { transporter } = require('../../utils/mail');
+
 async function getAllHandler(req, res, next) {
   try {
     const users = await getAllUsers();
@@ -33,6 +35,16 @@ async function getByIdHandler(req, res, next) {
 async function createHandler(req, res, next) {
   try {
     const user = await createUser(req.body);
+
+    //send email
+    transporter.sendMail({
+      from: 'No reply <dotcocktails@gmail.com>',
+      to: user.email,
+      subject: 'Welcome to Dot Cocktails',
+      Text: 'Bienvenido a Dot Cocktails',
+      html: '<b>Bienvenido a Dot Cocktails</b>',
+    });
+
     res.status(201).json({ user, message: 'User created' });
   } catch (error) {
     next(error);
