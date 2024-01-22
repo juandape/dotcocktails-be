@@ -40,9 +40,14 @@ async function createHandler(req, res, next) {
     transporter.sendMail({
       from: 'No reply <dotcocktails@gmail.com>',
       to: user.email,
-      subject: 'Welcome to Dot Cocktails',
-      Text: 'Bienvenido a Dot Cocktails',
-      html: '<b>Bienvenido a Dot Cocktails</b>',
+      subject: '[Dot Cocktails] Activa tu cuenta',
+      text: 'Bienvenido a Dot Cocktails',
+      html: `
+      <h1>Hola ${user.name}</h1>
+      <h2>Bienvenido a Dot Cocktails</h2>
+      <p>Para activar tu cuenta, haz click en el siguiente boton</p>
+      <button><a href="${process.env.FRONTEND_URL}/verify-account/${user.passwordResetToken}">Activar cuenta</a></button>
+      `,
     });
 
     res.status(201).json({ user, message: 'User created' });

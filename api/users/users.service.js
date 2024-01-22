@@ -1,5 +1,5 @@
 const User = require('./users.model');
-const { hashPassword } = require('../../auth/utils/bcrypt');
+const { hashPassword, createHashToken } = require('../../auth/utils/bcrypt');
 
 function getAllUsers() {
   return User.find();
@@ -33,6 +33,8 @@ async function createUser(data) {
   const newUser = new User({
     ...data,
     password: hashedPassword,
+    passwordResetToken: createHashToken(data.email),
+    passwordResetExpires:  Date.now() + 3600000, // 1 hour
   });
 
   return newUser.save();

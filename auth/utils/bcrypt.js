@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 /**
  * Hash password
@@ -10,7 +11,7 @@ const bcrypt = require('bcrypt');
 async function hashPassword(password, factor) {
   // salt
   const salt = await bcrypt.genSalt(factor);
-  
+
   // hash
   return bcrypt.hash(password, salt);
 }
@@ -19,7 +20,12 @@ async function comparePassword(password, hashedPassword) {
   return bcrypt.compare(password, hashedPassword);
 }
 
+function createHashToken(data) {
+  return crypto.createHash('sha256').update(data).digest('hex');
+}
+
 module.exports = {
   hashPassword,
   comparePassword,
+  createHashToken,
 };
