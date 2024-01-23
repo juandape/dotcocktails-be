@@ -23,6 +23,15 @@ async function getUserByEmail(email) {
   return user;
 }
 
+async function getUserByToken(token) {
+  const user = await User.findOne({ passwordResetToken: token });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return user;
+}
+
 async function createUser(data) {
   if (!data.password) {
     throw new Error('Password is required');
@@ -30,11 +39,13 @@ async function createUser(data) {
 
   const hashedPassword = await hashPassword(data.password);
 
+  const expiresIn = Date.now() + 3_600_000 * 24; // 24 hours
+
   const newUser = new User({
     ...data,
     password: hashedPassword,
     passwordResetToken: createHashToken(data.email),
-    passwordResetExpires:  Date.now() + 3600000, // 1 hour
+    passwordResetExpires: new Date(expiresIn), // 24 hours
   });
 
   return newUser.save();
@@ -64,6 +75,7 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserByEmail,
+  getUserByToken,
   createUser,
   updateUser,
   deleteUser,

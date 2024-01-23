@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { loginHandler } = require('./local.controller');
+const { loginHandler, activateHandler } = require('./local.controller');
 
 const router = Router();
 
@@ -8,6 +8,7 @@ router.post('/login', loginHandler);
 //change password
 //reset password
 //activate account
+router.post('/activate/:token', activateHandler);
 //logout
 
 module.exports = router;
