@@ -43,10 +43,17 @@ async function createHandler(req, res, next) {
       subject: '[Dot Cocktails] Activa tu cuenta',
       text: 'Bienvenido a Dot Cocktails',
       html: `
-      <h1>Hola ${user.name}</h1>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+      <h1 style="color: teal;">Hola <strong>${user.name}</strong></h1>
       <h2>Bienvenido a Dot Cocktails</h2>
-      <p>Para activar tu cuenta, haz click en el siguiente boton</p>
-      <button><a href="${process.env.FRONTEND_URL}/verify-account/${user.passwordResetToken}">Activar cuenta</a></button>
+      <p>Para activar tu cuenta, haz click en el siguiente enlace</p>
+      <p style="text-align: center;">
+        <a href="${process.env.FRONTEND_URL}/verify-account/${user.passwordResetToken}" style="display: inline-block; padding: 10px 20px; background-color: #4caf50; color: white; text-decoration: none; border-radius: 5px;">Activar cuenta</a>
+      </p>
+      <br>
+      <p>Si no puedes hacer click en el enlace, copia y pega el siguiente enlace en tu navegador</p>
+      <p>${process.env.FRONTEND_URL}/verify-account/${user.passwordResetToken}</p>
+    </div>
       `,
     });
 

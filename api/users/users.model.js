@@ -26,6 +26,7 @@ const UsersSchema = new mongoose.Schema(
       type: String,
       required: false,
       trim: true,
+      default: 'https://res.cloudinary.com/dpvmwsbq8/image/upload/v1706058687/upload-folder/default-avatar_cgpa3v.jpg'
     },
     role: {
       type: [String], // ['ADMIN', 'GUEST']
