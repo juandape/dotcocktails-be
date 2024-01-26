@@ -27,6 +27,7 @@ async function loginHandler(req, res, next) {
     const token = signToken(payload);
 
     const profile = {
+      id: user._id,
       name: user.name,
       avatar: user.avatar,
       email: user.email,
