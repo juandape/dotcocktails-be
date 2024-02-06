@@ -71,6 +71,29 @@ async function deleteUser(id) {
   return User.findByIdAndDelete(id);
 }
 
+async function createPasswordResetToken(email) {
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  const token = createHashToken(email);
+
+  const updatedUser = await updateUser(user._id, {
+    passwordResetToken: token,
+    passwordResetExpires: Date.now() + 3600000, // 1 hour
+  });
+  await updatedUser.save();
+
+  if (!updatedUser) {
+    throw new Error('Error creating password reset token');
+  }
+
+  return token;
+
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -79,4 +102,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  createPasswordResetToken,
 };
