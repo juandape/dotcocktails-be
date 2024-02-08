@@ -17,7 +17,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle1: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content1: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle2: {
       type: String,
       required: false,
       trim: true,
@@ -27,7 +37,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle3: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content3: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle4: {
       type: String,
       required: false,
       trim: true,
@@ -37,7 +57,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle5: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content5: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle6: {
       type: String,
       required: false,
       trim: true,
@@ -47,7 +77,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle7: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content7: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle8: {
       type: String,
       required: false,
       trim: true,
@@ -57,7 +97,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle9: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content9: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle10: {
       type: String,
       required: false,
       trim: true,
@@ -67,7 +117,17 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle11: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content11: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle12: {
       type: String,
       required: false,
       trim: true,
@@ -77,12 +137,27 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    subtitle13: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content13: {
       type: String,
       required: false,
       trim: true,
     },
+    subtitle14: {
+      type: String,
+      required: false,
+      trim: true,
+    },
     content14: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    subtitle15: {
       type: String,
       required: false,
       trim: true,
