@@ -12,7 +12,7 @@ const HistoriesSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    images: {
+    image1: {
       type: Array,
       required: false,
       trim: true,
@@ -22,8 +22,18 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    image2: {
+      type: Array,
+      required: false,
+      trim: true,
+    },
     content2: {
       type: String,
+      required: false,
+      trim: true,
+    },
+    image3: {
+      type: Array,
       required: false,
       trim: true,
     },
@@ -32,8 +42,18 @@ const HistoriesSchema = new mongoose.Schema(
       required: false,
       trim: true,
     },
+    image4: {
+      type: Array,
+      required: false,
+      trim: true,
+    },
     content4: {
       type: String,
+      required: false,
+      trim: true,
+    },
+    image5: {
+      type: Array,
       required: false,
       trim: true,
     },
